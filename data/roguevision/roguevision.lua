@@ -9,7 +9,7 @@ local IMSCALE = 256.0 * 0.9
 local SAFETY_OFFSET = 5.0
 local MIN_VISION_DIST = 25.0
 local PENETRATION = 5.0
-local IMANGLE = math.pi*2.0 / 32
+local IMANGLE = math.pi*2.0 / 128
 
 local function get_player()
   return EntityGetWithTag("player_unit")[1]
