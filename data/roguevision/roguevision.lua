@@ -8,7 +8,7 @@ local MAXDIST = 300.0
 local IMSCALE = 256.0 * 0.9
 local SAFETY_OFFSET = 5.0
 local MIN_VISION_DIST = 25.0
-local PENETRATION = 0.0
+local PENETRATION = 5.0
 local IMANGLE = math.pi*2.0 / 32
 
 local function get_player()
@@ -70,7 +70,7 @@ local function delete_existing_wedges()
 end
 
 delete_existing_wedges()
-local _vision_wedges = make_vision_wedges(64)
+local _vision_wedges = make_vision_wedges(128)
 
 local frame = 0
 function _rogue_vision_main()
