@@ -1,3 +1,6 @@
+// Note that this file specifically is mostly 
+// from Noita and is not covered by the MIT license
+
 #version 110
 #define DITHER
 #define HIQ
@@ -245,12 +248,17 @@ void main()
 
 // ============================================================================================================
 // calculate fog of war =======================================================================================
+	// The 'rogue vision' mod has stripped out most of this function so that, in effect, the fog of war is 
+	// never cleared, and the only visible parts are caused by skylights and holes (the mod then creates a 
+	// bunch of special wedge-shaped holes guided by Raytraces).
+	// --basilisk
 
-	// fetch fog of war contribution from a texture
 	float fog_of_war_amount = 1.0;
 	if (ENABLE_FOG_OF_WAR)
 	{
-		fog_of_war_amount = 1.0-light_tex_sample.a; // light_tex_sample.a contains "fog of war holes" (for example temporary holes caused by explosions)
+		// light_tex_sample.a contains "fog of war holes" (for example temporary holes caused by explosions)
+		// (as well as the rogue-vision specific holes)
+		fog_of_war_amount = 1.0-light_tex_sample.a; 
 	}
 
 // ============================================================================================================
