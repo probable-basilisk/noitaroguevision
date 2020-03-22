@@ -62,13 +62,15 @@ local function get_neighbor_dists(idx)
          _vision_wedges[(idx%WEDGE_COUNT)+1].dist
 end
 
+local Trace = RaytraceSurfaces or Raytrace
+
 local function trace_wedge(cx, cy, wedge_idx)
   local wedge = _vision_wedges[wedge_idx]
   local sx = cx + math.cos(wedge.theta)*SAFETY_OFFSET
   local sy = cy + math.sin(wedge.theta)*SAFETY_OFFSET
   local tx = cx + math.cos(wedge.theta)*MAXDIST
   local ty = cy + math.sin(wedge.theta)*MAXDIST
-  local hit, hitx, hity = Raytrace(sx, sy, tx, ty)
+  local hit, hitx, hity = Trace(sx, sy, tx, ty)
   if not hit then
     hitx = tx
     hity = ty
